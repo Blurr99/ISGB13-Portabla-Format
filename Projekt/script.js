@@ -2,34 +2,80 @@
 
 window.addEventListener('load', init);
 
+
+
 function init() {
-  //printVillagers();
-  document.querySelector('#searchForm').addEventListener('submit', searchFish);
+  printVillagers();
+
+  let allVillagers = document.querySelector('#allVillagers');
+  allVillagers.addEventListener("click", displayVillager);
+
+  //document.querySelector('#searchForm').addEventListener('submit', searchFish);
+}
+
+function displayVillager(event){
+
+  let villager = event.target;
+  console.log(villager);
+
+  let villagerID = event.querySelector('.villagerID').innerHTML;
+  console.log(villagerID);
+
+  window.fetch('http://acnhapi.com/v1/villagers/' + villagerID).then(function(response){
+    return response.json();
+  }).then(function(data){
+    
+    let displayResult = document.querySelector('#displayVillager');
+
+    
+    let villagerName = document.createElement('h2');
+    villagerName.innerHTML = data.name['name-EUen'];
+    displayResult.appendChild(villagerName);
+
+    
+    let villagerImg = document.createElement('img');
+    villagerImg.src = data.image_uri;
+    villagerImg.alt = 'En bild av ' + data.name['name-EUen'];
+    displayResult.appendChild(villagerImg);
+    
+
+  });
 }
 
 //skriver ut namn på alla villagers
 function printVillagers(){
-  
-  //hämta ut data för varje villager genom att loopa igenom alla id som finns
-    for(let i = 1; i < 392; i++){
+  window.fetch('https://restcountries.com/v3.1/all').then(function(response){
+    return response.json();
+  }).then(function(data) {
+    //console.log(data[1]);
+  });
+  window.fetch('http://acnhapi.com/v1/villagers').then(function(response){
+    return response.json();
+  }).then(function(data) {
+    console.log(data);
 
-      //skrivs ibland inte ut i rätt ordning och måste ersättas med något bättre
-      window.fetch('http://acnhapi.com/v1/villagers/' /*+ encodeURIComponent(i)*/).then(function(response){
-        return response.json();
-      }).then(function(data) {
-      
-      let displayResult = document.querySelector('#villagers');
-      let villagerName = document.createElement('h5');
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/is_not_iterable
+    for(let villagerData of Object.keys(data)){
+      console.log(data[villagerData]);
+      let currentVillager = data[villagerData];
 
-      //skriver ut villager namn och id
-      let textNode = document.createTextNode(data.name['name-EUen'] + " " + data.id);
-      villagerName.appendChild(textNode);
-      displayResult.appendChild(villagerName);
-      });
+      let displayVillagers = document.querySelector('#allVillagers');
+      let villagerList = document.createElement('li');
+      let villagerLink = document.createElement('a');
+
+      villagerLink.setAttribute('data-attribute', currentVillager.id);
+      villagerLink.setAttribute('href', " ");
+      villagerLink.innerHTML = currentVillager.name['name-EUen'];
+      villagerList.appendChild(villagerLink);
+      displayVillagers.appendChild(villagerList);
       
     }
    
+  });
+  
   }
+   
+  
 
 
 function searchFish(e){
@@ -57,7 +103,7 @@ function searchFish(e){
 
       let fishImg = document.createElement('img');
       fishImg.src = fishData.image_uri;
-      fishImg.alt = 'A picture of a ' + fishData.name['name-EUen'];
+      fishImg.alt = 'En bild av en ' + fishData.name['name-EUen'];
       resultDiv.appendChild(fishImg);
 
       let fishLocation = document.createElement('p');
@@ -74,6 +120,16 @@ function searchFish(e){
       let fishRarityNode = document.createTextNode('Rarity: ' + fishData.availability.rarity);
       fishRarity.appendChild(fishRarityNode);
       resultDiv.appendChild(fishRarity);
+
+      let fishTime = document.createElementNS('p');
+      if (fishData.availability.time.isAllDay == false){
+        let fishTimeNode = document.createTextNode('You can catch ' + fishData.name['name-EUen'] + 'between ' + fish.availability.time);
+      }
+      else{
+        let fishTimeNode = document.createTextNode('The fish is available all day');
+      }
+      fishTime.appendChild(fishTimeNode);
+      resultDiv.appendChild(fishTime);
     //}
   })
 }
