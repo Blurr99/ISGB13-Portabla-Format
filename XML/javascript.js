@@ -23,11 +23,11 @@ function searchMovie(e){
         let xmlDom = parser.parseFromString(data, 'application/xml');
 
         let element = xmlDom.querySelectorAll('artist');
-
-
+        console.log(element);
             let artist = element[0];
-            let name = artist.getAttribute('name');
             console.log(artist);
+            let name = artist.querySelector('name').innerHTML;
+            
     
             console.log(name);
     
