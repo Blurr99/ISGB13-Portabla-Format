@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="autor" content="Anna-Maria Paleczek">
+    <title> Projekt JSON </title>
+    <link rel="stylesheet" href="css.css">
+    <!-- font från google fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Animal Crossing: New Horizons Fish and Bugs</h1>
+      <nav>
+        <ul>
+          <li><a href="">Fish</a></li>
+          <li><a href="Bugs.html">Bugs</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside>
+      <form id="searchFish">
+        <label for="search">Search fish</label>
+        <div>
+          <input type="search" id="search" placeholder="Enter fish name here">
+          <div>
+            <button type="submit" id="button">Search</button>
+          </div>
+        </div>
+      </form>
+      <div class="errorDiv"></div>
+    </aside>
+    <main>
+      <div class="flex">
+        <div class="displayResult" id="resultFish"></div> 
+        <div class="displayList" id="listFish"></div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

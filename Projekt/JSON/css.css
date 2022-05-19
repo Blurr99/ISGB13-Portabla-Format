@@ -1,46 +1,123 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+header{
+    background-color: cornflowerblue;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    margin: 5px;
+}
+
 body{
     font-size: large;
+    margin: 0px;
+    background-color: lightblue;
 }
 
+/*css för text-element*/
 p{
     font-size: x-large;
-    text-align: center;    
+    text-align: center;
+    margin: 10px 5px;    
 }
 
-h1{
+h1, h2, h4{
     text-align: center;
 }
 
+/*css för listor*/
+nav ul{
+    display: flex;
+    justify-content:center;
+}
+
+nav li{
+    margin: 2rem;
+    font-size: 18pt;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding: 5px 10px;
+    background-color: white;
+    font-weight: bold;
+}
+
+li{
+    list-style: none;
+}
+
+.listElement{
+    width: 80%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding: 2px;
+    background-color: white;
+}
+ 
+.icon{
+    height: 40px;
+    width: auto;
+    display: inline;
+    vertical-align: middle;
+}
+
+/*css för länkar*/
+a{
+    font-size: 16pt;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/*css för formulär och tillhörande element*/
+form{
+    text-align: center;
+    margin: 10px;
+    background-color: cornflowerblue;
+    padding: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+input{
+    width: 50%;
+    padding: 10px;
+    margin: 10px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+button {
+    font-size: 16pt; 
+    margin: 5px;
+}
+
+
+/* css för display av resultat och lista */
 .flex{
     display: flex;
-    border: 2px, solid, black;
     justify-content: space-around;
-}
-
-h2{
-    text-align: center;
-}
-
-img{
-    display: block;
-    margin: auto;
-    justify-content: space-around;
-    width: 50%;
-    height:auto;
-}
-
-#searchForm{
-    text-align: right;
-    margin: 10px;
 }
 
 .displayList{
     overflow: auto; /*lägger till en scrollbar*/
-    max-height: 600px;
-    width: 20%;
+    max-height: 800px;
+    width: 30%;
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    background-color: cornflowerblue;
 }
 
 .displayResult{
@@ -48,20 +125,27 @@ img{
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    background-color: white;
 }
 
-@media screen and (max-width: 800px) {
+img{
+    display: block;
+    margin: auto;
+    justify-content: space-around;
+    width: 50%;
+    height: auto;
+}
+
+/* bugImg ser större ut som fiskImg så jag sätter storlek till något mindre */
+.bugImg{
+    width: 30%;
+}
+
+
+/* gör sidan mer responsiv */
+@media screen and (max-width: 900px) {
     .flex{
         display: block;
-    }
-
-    ul{
-        list-style-type: none;
-    }
-
-    li a:visited{
-        color: black;
-        font-size: large;
     }
 
     .displayList{

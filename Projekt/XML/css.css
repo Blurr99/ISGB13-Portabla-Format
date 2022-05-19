@@ -1,0 +1,93 @@
+*{
+    font-family: 'Prompt', sans-serif;
+}
+
+body{
+    background-color: cornflowerblue;
+}
+
+header{
+    background-color: cornflowerblue
+}
+
+/*CSS för text-element*/
+p{
+    font-size: large;
+    text-align: center;    
+}
+
+h1, h2, h3, h4{
+    text-align: center;
+}
+
+
+h2{
+    background-color: aquamarine;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    width: 80%;
+    margin:auto;
+}
+
+/*CSS för forumulär och formulärkomponenter*/
+form{
+    text-align: center;
+    margin: 5px;
+    background-color: darkslateblue;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+input{
+    width: 50%;
+    padding: 5px;
+    margin: 5px;
+}
+
+label{
+    font-size: 14pt;
+    color: white;
+}
+
+button {
+    font-size: 12pt; 
+    margin: 5px;
+}
+
+/*CSS för resultat*/
+.sub{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    width: 40%;
+    margin: 5px;
+    background-color: aquamarine;
+}
+
+.displayResult{
+    width: 90%;
+    display: flex;
+    justify-content:center;
+    margin: auto;
+}
+
+/*för att göra sidan responsiv*/
+@media screen and (max-width: 600px) {
+
+    .displayResult{
+        display: block;
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sub{
+        width: 100%;
+    }
+
+}
+
